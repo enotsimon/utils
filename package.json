@@ -1,0 +1,71 @@
+{
+  "name": "enot-simon-utils",
+  "private": true,
+  "description": "some common utils for my pet projects",
+  "repository": "https://github.com/enotsimon/utils",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=8.10"
+  },
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "flow": "flow",
+    "lint": "eslint --ext .js",
+    "test": "NODE_PATH=./app mocha --require babel-core/register test/*.test.js"
+  },
+  "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "d3": "^4.10.0",
+    "deep-equal-in-any-order": "^1.0.14",
+    "ramda": "^0.27.0",
+    "random": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-eslatest-node6": "^1.0.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-latest": "^6",
+    "chai": "^4.1.2",
+    "chai-string": "^1.4.0",
+    "eslint": "5.13.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-flowtype": "^4.7.0",
+    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-jsx-a11y": "6.2.1",
+    "eslint-plugin-jsx-control-statements": "^3.0.0",
+    "eslint-plugin-react": "7.12.4",
+    "flow": "^0.2.3",
+    "flow-bin": "^0.142.0",
+    "lint-staged": "^6.0.0",
+    "loader-utils": "^1.1.0",
+    "mocha": "^5.0.0",
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": [
+    "flow",
+    "lint-staged",
+    "test"
+  ],
+  "lint-staged": {
+    "*.{cmd,html,json,md,sh,txt,xml,yml}": [
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.scss": [
+      "stylelint --di",
+      "git add"
+    ]
+  }
+}
