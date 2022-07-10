@@ -4,6 +4,7 @@
   "description": "some common utils for my pet projects",
   "repository": "https://github.com/enotsimon/utils",
   "main": "src/index.js",
+  "version": "0.0.1",
   "engines": {
     "node": ">=8.10"
   },
@@ -11,6 +12,7 @@
     "clean": "rm -rf dist/*",
     "flow": "flow",
     "lint": "eslint --ext .js",
+    "lint-staged": "lint-staged",
     "test": "NODE_PATH=./app mocha --require babel-core/register test/*.test.js"
   },
   "dependencies": {
