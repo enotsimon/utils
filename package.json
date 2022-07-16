@@ -14,8 +14,9 @@
     "lint": "eslint --ext .js",
     "lint-staged": "lint-staged",
     "test": "NODE_PATH=./app mocha --require babel-core/register test/*.test.js",
-    "prepack": "yarn run prepack:babel",
-    "prepack:babel": "babel src/ -d lib"
+    "prepack": "yarn prepack:babel && yarn prepack:flow",
+    "prepack:babel": "babel src/ -d lib",
+    "prepack:flow": "flow-copy-source src lib"
   },
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -49,6 +50,7 @@
     "eslint-plugin-react": "7.12.4",
     "flow": "^0.2.3",
     "flow-bin": "^0.142.0",
+    "flow-copy-source": "^2.0.9",
     "lint-staged": "^6.0.0",
     "loader-utils": "^1.1.0",
     "mocha": "^5.0.0",
