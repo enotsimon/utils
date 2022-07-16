@@ -13,7 +13,8 @@
     "flow": "flow",
     "lint": "eslint --ext .js",
     "lint-staged": "lint-staged",
-    "test": "NODE_PATH=./app mocha --require babel-core/register test/*.test.js"
+    "test": "NODE_PATH=./app mocha --require babel-core/register test/*.test.js",
+    "build": "npx babel src/ -d lib"
   },
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -69,5 +70,8 @@
       "stylelint --di",
       "git add"
     ]
-  }
+  },
+  "files": [
+    "lib"
+  ]
 }
