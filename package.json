@@ -14,7 +14,8 @@
     "lint": "eslint --ext .js",
     "lint-staged": "lint-staged",
     "test": "NODE_PATH=./app mocha --require babel-core/register test/*.test.js",
-    "build": "npx babel src/ -d lib"
+    "prepack": "yarn run prepack:babel",
+    "prepack:babel": "babel src/ -d lib"
   },
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
