@@ -6,8 +6,8 @@ import * as R from 'ramda'
  * its a copy-paste of old util.js but refactored
  * plus some new
  */
-type Radians = number
-type Degrees = number
+export type Radians = number
+export type Degrees = number
 
 export type PolarPoint = {|
   angle: number,
