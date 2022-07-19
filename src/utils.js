@@ -41,13 +41,6 @@ export const execInCycleWithDelay = (
   setTimeout(() => { execInCycleWithDelay(index + 1, limit, delay, func, final_func) }, delay)
 }
 
-// dont use it!!! это дерьмо используется только в src/voronoi.js
-export const pushUniq = <T: any>(element: T, arr: Array<T>): void => {
-  if (arr.indexOf(element) === -1) {
-    arr.push(element)
-  }
-}
-
 export const randElement = <T>(arr: Array<T>): T => {
   if (arr.length === 0) {
     throw new Error('randElement input array cannot be empty')
