@@ -3,8 +3,6 @@
   "private": true,
   "description": "some common utils for my pet projects",
   "repository": "https://github.com/enotsimon/utils",
-  "main": "src/index.js",
-  "version": "0.0.1",
   "engines": {
     "node": ">=8.10"
   },
