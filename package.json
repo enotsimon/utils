@@ -3,6 +3,7 @@
   "private": true,
   "description": "some common utils for my pet projects",
   "repository": "https://github.com/enotsimon/utils",
+  "version": "0.0.3",
   "engines": {
     "node": ">=8.10"
   },
