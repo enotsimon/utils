@@ -148,9 +148,10 @@ export const vectorToDist = <T: { ...XYPoint }>(from: T, to: T, length: number =
 export const convexPolygonCentroid = (points: Array<XYPInex>): XYPoint => {
   const p1 = points[0]
   let square_sum = 0
-  let xc = 0; let
-    yc = 0
-  for (let i = 1; i < points.length - 1; i + 1) {
+  let xc = 0
+  let yc = 0
+  /* eslint-disable-next-line no-plusplus */
+  for (let i = 1; i < points.length - 1; i++) {
     const p2 = points[i]
     const p3 = points[i + 1]
     const square = ((p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y)) / 2 // triangle square
