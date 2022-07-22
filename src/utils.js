@@ -41,6 +41,10 @@ export const execInCycleWithDelay = (
   setTimeout(() => { execInCycleWithDelay(index + 1, limit, delay, func, final_func) }, delay)
 }
 
+type FAV = <V>(xs: $ReadOnlyArray<V>) => { [string]: V }
+// $FlowIgnore
+export const indexById = (): FAV => R.indexBy(R.prop('id'))
+
 export const randElement = <T>(arr: Array<T>): T => {
   if (arr.length === 0) {
     throw new Error('randElement input array cannot be empty')
