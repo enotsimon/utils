@@ -41,8 +41,8 @@ export const execInCycleWithDelay = (
   setTimeout(() => { execInCycleWithDelay(index + 1, limit, delay, func, final_func) }, delay)
 }
 
-// $FlowIgnore
-export const indexById = R.indexBy(R.prop('id'))
+type IBT = (<V: { id: string }>(xs: $ReadOnlyArray<V>) => { [key: string]: V })
+export const indexById: IBT = R.indexBy(R.prop('id'))
 
 export const randElement = <T>(arr: Array<T>): T => {
   if (arr.length === 0) {
