@@ -86,35 +86,11 @@ describe('allChannelMatrixes', () => {
       { r: 255, g: 255, b: 255 },
     ])
   })
-})
 
-describe('allChannelMatrixes', () => {
-  it('0 case', () => {
-    assert.deepEqual(Color.matrixesByValuesList([0, 127, 255], false), [
-      { r: 0, g: 0, b: 127 },
-      { r: 0, g: 0, b: 255 },
-      { r: 0, g: 127, b: 0 },
-      { r: 0, g: 127, b: 127 },
-      { r: 0, g: 127, b: 255 },
-      { r: 0, g: 255, b: 0 },
-      { r: 0, g: 255, b: 127 },
-      { r: 0, g: 255, b: 255 },
-      { r: 127, g: 0, b: 0 },
-      { r: 127, g: 0, b: 127 },
-      { r: 127, g: 0, b: 255 },
-      { r: 127, g: 127, b: 0 },
-      { r: 127, g: 127, b: 255 },
-      { r: 127, g: 255, b: 0 },
-      { r: 127, g: 255, b: 127 },
-      { r: 127, g: 255, b: 255 },
-      { r: 255, g: 0, b: 0 },
-      { r: 255, g: 0, b: 127 },
-      { r: 255, g: 0, b: 255 },
-      { r: 255, g: 127, b: 0 },
-      { r: 255, g: 127, b: 127 },
-      { r: 255, g: 127, b: 255 },
-      { r: 255, g: 255, b: 0 },
-      { r: 255, g: 255, b: 127 },
-    ])
+  it('2 case', () => {
+    const result1 = Color.allChannelMatrixes(2, false)
+    assert.equal(result1.length, 120)
+    const result2 = Color.allChannelMatrixes(2, true)
+    assert.equal(result2.length, 125)
   })
 })
