@@ -31,7 +31,7 @@ export const to_pixi = ([r, g, b]: RGBArray): number => {
   return (r << 16) + (g << 8) + b
 }
 
-type Order = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
+export type Order = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
 export const allChannelMatrixes = (order: Order = 1, withMonochrome: boolean = false): Array<ChannelMatrix> => {
   if (order < 0 || order > 8) {
     throw new Error('order shold be from 0 to 8')
