@@ -36,11 +36,15 @@ export const allChannelMatrixes = (order: Order = 1, withMonochrome: boolean = f
   if (order < 0 || order > 8) {
     throw new Error('order shold be from 0 to 8')
   }
-  const multis = R.map(e => e - 1, [1, ...R.map(n => 256 / (2 ** n), R.reverse(R.range(0, order + 1)))])
+  const step = 256 / (2 ** order)
+  const cnt = 256 / step
+  // 0 is a special case, Math.max(v, 0) for it
+  const multis = R.map(i => Math.max(i * step - 1, 0), R.range(0, cnt + 1))
+  // console.log('LIST', order, step, cnt, multis)
   return matrixesByValuesList(multis, withMonochrome)
 }
 
-export const matrixesByValuesList = (list: Array<number>, withMonochrome: boolean = false): Array<ChannelMatrix> => {
+const matrixesByValuesList = (list: Array<number>, withMonochrome: boolean = false): Array<ChannelMatrix> => {
   const all = R.chain(
     r => R.chain(
       g => R.map(
