@@ -25,8 +25,6 @@ export type LineFormula = { a: number, b: number, c: number }
 
 export type ArrOrObj<T, Id: string | number> = Array<T> | {| [Id]: T |}
 
-export type Shuffler = <T: any>(arr: Array<T>) => Array<T>
-
 // dont use it!!!
 export const execInCycleWithDelay = (
   index: number,
@@ -79,7 +77,7 @@ export const noSameValuesPairs = <T>(list: Array<T>): Array<[T, T]> => filterSam
 export const noOrderPairs = <T>(list: Array<T>): Array<[T, T]> => noOrderPairsFilterSame(list, false)
 export const noOrderNoSameValuesPairs = <T>(list: Array<T>): Array<[T, T]> => noOrderPairsFilterSame(list, true)
 
-export const shuffle: Shuffler = <T: any>(arr: Array<T>): Array<T> => arr.sort(() => random.int(0, 2) - 1)
+export const shuffle = <T: any>(arr: Array<T>): Array<T> => arr.sort(() => random.int(0, 2) - 1)
 
 export const normalizeValue = (
   value: number,
