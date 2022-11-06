@@ -1,5 +1,4 @@
 // @flow
-import random from 'random'
 import * as R from 'ramda'
 
 /**
@@ -44,13 +43,6 @@ export const execInCycleWithDelay = (
 type IBT = (<V: { id: string }>(xs: $ReadOnlyArray<V>) => { [key: string]: V })
 export const indexById: IBT = R.indexBy(R.prop('id'))
 
-export const randElement = <T>(arr: Array<T>): T => {
-  if (arr.length === 0) {
-    throw new Error('randElement input array cannot be empty')
-  }
-  return arr[random.int(0, arr.length - 1)]
-}
-
 const filterSame = <T>(list: Array<[T, T]>): Array<[T, T]> => R.filter(([v1, v2]) => !R.equals(v1, v2), list)
 const noOrderPairsFilterSame = <T>(list: Array<T>, filter: boolean): Array<[T, T]> => {
   return pairs(list).reduce(([acc, closeList], [e1, e2]) => {
@@ -76,8 +68,6 @@ export const pairs = <T>(list: Array<T>): Array<[T, T]> => R.chain(e1 => R.map(e
 export const noSameValuesPairs = <T>(list: Array<T>): Array<[T, T]> => filterSame(pairs(list))
 export const noOrderPairs = <T>(list: Array<T>): Array<[T, T]> => noOrderPairsFilterSame(list, false)
 export const noOrderNoSameValuesPairs = <T>(list: Array<T>): Array<[T, T]> => noOrderPairsFilterSame(list, true)
-
-export const shuffle = <T: any>(arr: Array<T>): Array<T> => arr.sort(() => random.int(0, 2) - 1)
 
 export const normalizeValue = (
   value: number,
