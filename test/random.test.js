@@ -11,6 +11,11 @@ describe('randNth', () => {
     const list = [1, 2, 3, 4, 5]
     list.forEach((n, i) => assert.equal(rnd.randNth(list, () => i / list.length), n))
   })
+  it('call with real random func', () => {
+    rnd.initRandom()
+    const actual = rnd.randNth([1, 2, 3])
+    assert.isNumber(actual)
+  })
 })
 
 describe('randomByWeight', () => {
@@ -36,4 +41,9 @@ describe('randomByWeight', () => {
       const actual = rnd.randomByWeight(conf, randFunc(randVal))
       assert.equal(actual, expected)
     }))
+  it('call with real random func', () => {
+    rnd.initRandom()
+    const actual = rnd.randomByWeight(floatConf)
+    assert.isNumber(actual)
+  })
 })
