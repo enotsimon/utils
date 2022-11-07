@@ -22,7 +22,8 @@ export type XYPInex = { ...XYPoint }
 
 export type LineFormula = { a: number, b: number, c: number }
 
-export type ArrOrObj<T, Id: string | number> = Array<T> | {| [Id]: T |}
+export type Record<T: Object> = {| [$PropertyType<T, 'id'>]: T |}
+export type ArrOrObj<T: Object> = Array<T> | Record<T>
 
 // dont use it!!!
 export const execInCycleWithDelay = (
@@ -40,8 +41,7 @@ export const execInCycleWithDelay = (
   setTimeout(() => { execInCycleWithDelay(index + 1, limit, delay, func, final_func) }, delay)
 }
 
-type IBT = (<V: { id: string }>(xs: $ReadOnlyArray<V>) => { [key: string]: V })
-export const indexById: IBT = R.indexBy(R.prop('id'))
+export const indexById = <T: Object>(a: Array<T>): Record<T> => R.indexBy(R.prop('id'), a)
 
 const filterSame = <T>(list: Array<[T, T]>): Array<[T, T]> => R.filter(([v1, v2]) => !R.equals(v1, v2), list)
 const noOrderPairsFilterSame = <T>(list: Array<T>, filter: boolean): Array<[T, T]> => {
@@ -83,12 +83,12 @@ export const normalizeValue = (
   return (value - min) * (normal_max - normal_min) / (max - min) + normal_min
 }
 
-export const forSublist = <T, Id: string | number>(
-  data: ArrOrObj<T, Id>,
+export const forSublist = <T>(
+  data: ArrOrObj<T>,
   sublist: Array<string | number>, // Array<Id> but flow error
   func: (T) => T,
   prop: string = 'id'
-): ArrOrObj<T, Id> => {
+): ArrOrObj<T> => {
   const sublistInd = R.indexBy(e => e.toString(), sublist)
   // $FlowIgnore
   return R.map(e => {

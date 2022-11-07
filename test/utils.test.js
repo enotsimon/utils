@@ -207,7 +207,7 @@ describe('noOrderNoSameValuesPairs', () => {
 describe('forSublist', () => {
   const sample = [{ id: 1, n: 1 }, { id: 2, n: 2 }, { id: 3, n: 3 }, { id: 4, n: 4 }, { id: 5, n: 5 }]
   const mutator = e => ({ ...e, n: e.n + 2 })
-  const index = list => R.indexBy(e => e.id.toString(), list)
+  const index = list => U.indexById(list)
 
   it('should call given func for list of ids in given array', () => {
     const actual = U.forSublist(sample, [1, 2], mutator, 'id')
@@ -327,5 +327,22 @@ describe('removeLinks', () => {
     assert.deepEqual(expect, actual1)
     const actual2 = U.removeLinks(g, [{ p1: 'p1', p2: 'p3' }])
     assert.deepEqual(expect, actual2)
+  })
+})
+
+describe('indexById', () => {
+  it('number case', () => {
+    const sample = [{ id: 1, n: 1 }, { id: 2, n: 2 }, { id: 3, n: 3 }]
+    const actual = U.indexById(sample)
+    /* eslint-disable-next-line quote-props */
+    const expect = { '1': { id: 1, n: 1 }, '2': { id: 2, n: 2 }, '3': { id: 3, n: 3 } }
+    assert.deepEqual(expect, actual)
+  })
+
+  it('string case', () => {
+    const sample = [{ id: 'i1', n: 1 }, { id: 'i2', n: 1 }, { id: 'i3', n: 3 }]
+    const actual = U.indexById(sample)
+    const expect = { i1: { id: 'i1', n: 1 }, i2: { id: 'i2', n: 1 }, i3: { id: 'i3', n: 3 } }
+    assert.deepEqual(expect, actual)
   })
 })
