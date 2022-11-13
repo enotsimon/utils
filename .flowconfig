@@ -1,15 +1,22 @@
 [ignore]
-<PROJECT_ROOT>/node_modules/.*
-<PROJECT_ROOT>/lib/.*
+.*/node_modules/.*/test/.*
+.*/node_modules/fbjs/.*
+.*/node_modules/react-motion/.*
 
 [libs]
+./node_modules/jsx-control-statements/jsx-control-statements.latest.flow.js
 
 [options]
-#suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
+
+types_first=false
 
 module.file_ext=.js
 module.file_ext=.jsx
 module.file_ext=.json
 
-
 esproposal.decorators=ignore
+
+server.max_workers=4
+
+[lints]
+untyped-type-import=off
