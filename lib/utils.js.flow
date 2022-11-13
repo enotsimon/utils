@@ -324,6 +324,7 @@ export const findByLinks = <T: { ...GraphEdge }>(
       throw new Error(`id ${id} not found in graph`)
     }
   })
+  // $FlowIgnore i dont fucken know why but flow complane error in this line when include in one of my projects
   const curEdgesFiltered = R.indexBy(e => e, R.filter(id => !closeList[id] && filter(graph[id]), curEdges))
   if (R.equals(curEdgesFiltered, {})) {
     return closeList
