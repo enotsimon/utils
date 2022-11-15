@@ -5,7 +5,7 @@ import seedrandom from 'seedrandom'
 import * as R from 'ramda'
 
 export type WeightId = any
-export type WeightsConfig = Array<{| id: WeightId, weight: number |}>
+export type WeightsConfig = Array<{ id: WeightId, weight: number }>
 export type RandMinMaxFunc = (min: number, max: number) => number
 export type RandFloatFunc = () => number
 
