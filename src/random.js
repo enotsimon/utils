@@ -4,9 +4,7 @@ import random from 'random'
 import seedrandom from 'seedrandom'
 import * as R from 'ramda'
 
-export type WeightId = any
-export type WeightsConfigElement = {| id: WeightId, weight: number |}
-export type WeightsConfig = Array<{ ...WeightsConfigElement }>
+export type WeightsConfig<T: any> = Array<{ id: T, weight: number }>
 export type RandMinMaxFunc = (min: number, max: number) => number
 export type RandFloatFunc = () => number
 
@@ -18,7 +16,7 @@ export const initRandom = (seed: ?number = null): void => {
   random.use(seedrandom(seed || Date.now()))
 }
 
-export const randomByWeight = (config: WeightsConfig, rand: RandMinMaxFunc = rf): ?WeightId => {
+export const randomByWeight = <T>(config: WeightsConfig<T>, rand: RandMinMaxFunc = rf): ?T => {
   const max = R.reduce((acc, { weight }) => acc + weight, 0, config)
   const randValue = rand(0, max)
   const res = R.reduceWhile(
