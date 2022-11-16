@@ -4,7 +4,7 @@ import random from 'random'
 import seedrandom from 'seedrandom'
 import * as R from 'ramda'
 
-export type WeightsConfig<T: any> = Array<{ id: T, weight: number }>
+export type WeightsConfig<T: any> = $ReadOnlyArray<{ id: T, weight: number }>
 export type RandMinMaxFunc = (min: number, max: number) => number
 export type RandFloatFunc = () => number
 
@@ -19,6 +19,7 @@ export const initRandom = (seed: ?number = null): void => {
 export const randomByWeight = <T>(config: WeightsConfig<T>, rand: RandMinMaxFunc = rf): ?T => {
   const max = R.reduce((acc, { weight }) => acc + weight, 0, config)
   const randValue = rand(0, max)
+  // $FlowIgnore Cannot call `R.reduceWhile` because  `WeightsConfig` [1] is incompatible with  array. wat!?
   const res = R.reduceWhile(
     // id === null for case when randValue = 0
     ({ id, sum }) => (id === null) || sum <= randValue,
@@ -26,7 +27,7 @@ export const randomByWeight = <T>(config: WeightsConfig<T>, rand: RandMinMaxFunc
       return { id: e.id, sum: acc.sum + e.weight }
     },
     { id: null, sum: 0 },
-    config
+    Object.freeze(config)
   )
   return res.id
 }
