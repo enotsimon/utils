@@ -1,9 +1,10 @@
 {
   "name": "enot-simon-utils",
   "private": true,
-  "description": "some common utils for my pet projects",
+  "author": "enot-simon sy.enot@gmail.com",
+  "description": "some common utils for enot-simon pet projects",
   "repository": "https://github.com/enotsimon/utils",
-  "version": "0.0.3",
+  "version": "0.0.15",
   "engines": {
     "node": ">=8.10"
   },
@@ -20,7 +21,6 @@
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "d3": "^4.10.0",
-    "deep-equal-in-any-order": "^1.0.14",
     "ramda": "^0.27.0",
     "random": "^2.1.1"
   },
@@ -40,6 +40,7 @@
     "babel-preset-latest": "^6",
     "chai": "^4.1.2",
     "chai-string": "^1.4.0",
+    "deep-equal-in-any-order": "^1.0.14",
     "eslint": "5.13.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-plugin-flowtype": "^4.7.0",
