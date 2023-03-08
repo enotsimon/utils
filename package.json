@@ -1,6 +1,6 @@
 {
   "name": "enot-simon-utils",
-  "private": true,
+  "private": false,
   "author": "enot-simon sy.enot@gmail.com",
   "description": "some common utils for enot-simon pet projects",
   "repository": "https://github.com/enotsimon/utils",
